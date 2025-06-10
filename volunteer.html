@@ -6,120 +6,120 @@
   <title>Form Tổng Kết Năm Học</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #e3f2fd, #fce4ec);
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
 
-  form {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 720px;
-    transition: all 0.3s ease-in-out;
-  }
-
-  h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 32px;
-    font-size: 1.8rem;
-  }
-
-  label {
-    display: block;
-    margin: 18px 0 6px;
-    font-weight: 600;
-    color: #374151;
-  }
-
-  input,
-  select,
-  textarea {
-    width: 100%;
-    padding: 14px 16px;
-    margin-top: 5px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    font-size: 1rem;
-    background-color: #f9fafb;
-    transition: 0.3s ease;
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    border-color: #3b82f6;
-    background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    outline: none;
-  }
-
-  textarea {
-    resize: vertical;
-  }
-
-  button {
-    display: block;
-    margin: 36px auto 0;
-    padding: 14px 36px;
-    background: linear-gradient(90deg, #4f46e5, #3b82f6);
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  button:hover {
-    background: linear-gradient(90deg, #4338ca, #2563eb);
-    transform: translateY(-1px);
-  }
-
-  .back-button {
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  .back-button:hover {
-    color: #1e3a8a;
-    text-decoration: underline;
-  }
-
-  @media (max-width: 480px) {
     form {
-      padding: 24px;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 720px;
+      transition: all 0.3s ease-in-out;
     }
 
     h2 {
-      font-size: 1.5rem;
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 32px;
+      font-size: 1.8rem;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 6px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-top: 5px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: #f9fafb;
+      transition: 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #3b82f6;
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
     }
 
     button {
-      width: 100%;
+      display: block;
+      margin: 36px auto 0;
+      padding: 14px 36px;
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
     }
-  }
-</style>
+
+    button:hover {
+      background: linear-gradient(90deg, #4338ca, #2563eb);
+      transform: translateY(-1px);
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .back-button:hover {
+      color: #1e3a8a;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 24px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 
 </head>
 
@@ -192,7 +192,8 @@
         const data = await response.json();
 
         if (data.result === 'success') {
-          alert('Cảm ơn bạn đã gửi phản hồi!');
+          alert("'Không ai trở nên nghèo khó khi cho đi.' — Anne Frank\nCảm ơn bạn đã gieo một hạt giống tử tế – những điều nhỏ bé hôm nay sẽ nở hoa thành điều kỳ diệu ngày mai.");
+
           form.reset();
         } else {
           throw new Error(data.error || 'Lỗi không xác định từ máy chủ');
