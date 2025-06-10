@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Form Tổng Kết Năm Học</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 720px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 32px;
+    font-size: 1.8rem;
+  }
+
+  label {
+    display: block;
+    margin: 18px 0 6px;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-top: 5px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9fafb;
+    transition: 0.3s ease;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    outline: none;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    display: block;
+    margin: 36px auto 0;
+    padding: 14px 36px;
+    background: linear-gradient(90deg, #4f46e5, #3b82f6);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(90deg, #4338ca, #2563eb);
+    transform: translateY(-1px);
+  }
+
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .back-button:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    form {
+      padding: 24px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <form id="volunteer-form">
+    <a href="./index.html" class="back-button" aria-label="Trở về trang chính">← Trở về trang chính</a>
+
+    <h2>Form Tổng Kết Năm Học – Tình Nguyện Viên</h2>
+
+    <label for="name">Họ và tên:</label>
+    <input type="text" id="name" name="name" placeholder="Trần Văn A" required>
+
+    <label for="role">Vai trò trong năm học:</label>
+    <select id="role" name="role" required>
+      <option value="">-- Chọn vai trò --</option>
+      <option value="giang_vien">Tình nguyện viên</option>
+      <option value="tro_giang">Thành viên BQL</option>
+      <option value="ban_to_chuc">Học sinh</option>
+      <option value="khac">Khác</option>
+    </select>
+
+    <label for="experience">Bạn đánh giá trải nghiệm của mình năm vừa qua như thế nào?</label>
+    <textarea id="experience" name="experience" rows="4" placeholder="Viết cảm nhận của bạn..."></textarea>
+
+    <label for="suggestions">Bạn có góp ý hoặc đề xuất gì cho năm học tới?</label>
+    <textarea id="suggestions" name="suggestions" rows="4" placeholder="Chia sẻ ý kiến đóng góp..."></textarea>
+
+    <label for="continue">Bạn có dự định tiếp tục tham gia vào năm học tới?</label>
+    <select id="continue" name="continue" required>
+      <option value="">-- Chọn câu trả lời --</option>
+      <option value="co">Có</option>
+      <option value="dang_can_nhac">Đang cân nhắc</option>
+      <option value="khong">Không</option>
+    </select>
+
+    <button type="submit">Gửi phản hồi</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('volunteer-form');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Đang gửi...';
+      submitButton.disabled = true;
+
+      try {
+        const formData = {
+          name: form.name.value,
+          role: form.role.value,
+          experience: form.experience.value,
+          suggestions: form.suggestions.value,
+          continue: form.continue.value
+        };
+
+        const response = await fetchWithCorsFallback(
+          'https://script.google.com/macros/s/AKfycbwQg7URXw37s6CQEfJJwwEZLMXAp-dC9YZa9MNNUMiGfvVoNHQTafxJ1noKkgQtfmLC/exec',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.result === 'success') {
+          alert('Cảm ơn bạn đã gửi phản hồi!');
+          form.reset();
+        } else {
+          throw new Error(data.error || 'Lỗi không xác định từ máy chủ');
+        }
+      } catch (err) {
+        console.error('Submit error:', err);
+        alert('Lỗi khi gửi dữ liệu: ' + (err.message || 'Vui lòng thử lại sau'));
+      } finally {
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+      }
+    });
+
+    async function fetchWithCorsFallback(url, options) {
+      try {
+        const response = await fetch(url, options);
+
+        if (response.type === 'opaque') {
+          return await corsFallback(url, options);
+        }
+        return response;
+      } catch (err) {
+        if (err.name === 'TypeError') {
+          return await corsFallback(url, options);
+        }
+        throw err;
+      }
+    }
+
+    async function corsFallback(url, options) {
+      const noCorsResponse = await fetch(url, {
+        ...options,
+        mode: 'no-cors'
+      });
+      return {
+        json: async () => ({ result: 'success' }),
+        ok: true
+      };
+    }
+    function getDevEndpoint(url) {
+      return url.replace('/exec', '/dev');
+    }
+  </script>
+
+</body>
+
+</html>

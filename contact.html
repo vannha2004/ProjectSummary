@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact - Hàn Gắn – Lớp học Cầu Vồng</title>
+<style>
+  /* Import Inter font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+  :root {
+    --color-bg: #f0f9ff;
+    --color-text: #1f2937;
+    --color-text-muted: #4b5563;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-card-bg: #ffffff;
+    --color-shadow: rgba(0,0,0,0.1);
+    --border-radius: 16px;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --gradient-header: linear-gradient(135deg, #2563eb 0%, #8b5cf6 50%, #ec4899 100%);
+    --gradient-accent: linear-gradient(90deg, #2563eb, #ec4899);
+    --gradient-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    --transition-duration: 0.3s;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--gradient-bg);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    line-height: 1.7;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-duration) ease, transform var(--transition-duration) ease;
+  }
+  a:hover,
+  a:focus {
+    color: var(--color-primary-hover);
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* Navigation */
+  nav {
+    position: sticky;
+    top: 0;
+    background: var(--color-card-bg);
+    box-shadow: 0 2px 6px var(--color-shadow);
+    z-index: 100;
+    padding: 1rem 0;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .nav-links a {
+    padding: 0.5rem 0;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    transition: width var(--transition-duration) ease;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a:focus::after {
+    width: 100%;
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    padding: 8rem 0;
+    text-align: center;
+    user-select: none;
+    color: #f9fafb;
+    background: var(--gradient-header);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  header h1,
+  header p {
+    position: relative;
+    z-index: 1;
+  }
+
+  header h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.5);
+  }
+
+  header p {
+    color: #f3f4f6;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* Sections */
+  section {
+    margin: 4rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h2.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  h2.section-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-accent);
+    margin: 0.5rem auto;
+    border-radius: 2px;
+  }
+
+  .card {
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease, border-color var(--transition-duration) ease;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+    border-color: var(--color-primary);
+  }
+
+  .management-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .manager {
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+  }
+
+  .manager:hover,
+  .manager:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+  }
+
+  .manager h3 {
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .manager .role {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .contacts {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .contacts a {
+    display: inline-block;
+    margin-right: 0.8rem;
+    word-break: break-word;
+    position: relative;
+  }
+
+  .contacts a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: width var(--transition-duration) ease;
+  }
+
+  .contacts a:hover::after,
+  .contacts a:focus::after {
+    width: 100%;
+  }
+
+  .formats-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .format-item {
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+    text-align: center;
+    background: var(--gradient-accent);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .format-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .format-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  }
+
+  .socials {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .socials a {
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    transition: color var(--transition-duration) ease, transform var(--transition-duration) ease;
+  }
+
+  .socials a:hover,
+  .socials a:focus {
+    color: var(--color-primary-hover);
+    transform: scale(1.1);
+  }
+
+  .address {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .social-icons {
+    font-size: 1.8rem;
+    margin-right: 0.6rem;
+    color: var(--color-primary);
+    transition: transform var(--transition-duration) ease;
+  }
+
+  .socials a:hover .social-icons,
+  .socials a:focus .social-icons {
+    transform: rotate(15deg);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .management-list {
+      grid-template-columns: 1fr;
+    }
+    .formats-list {
+      grid-template-columns: 1fr;
+    }
+    header h1 {
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.3rem;
+    }
+    h2.section-title {
+      font-size: 2rem;
+    }
+    .nav-links {
+      gap: 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav>
+    <div class="container nav-links">
+      <a href="#management-heading">Ban quản lý</a>
+      <a href="#hr-heading">HR</a>
+      <a href="#formats-heading">Hình thức</a>
+      <a href="#contact-heading">Liên hệ</a>
+    </div>
+  </nav>
+
+  <main class="container" role="main">
+    <header>
+      <h1>Lớp học Cầu Vồng</h1>
+      <p>LỚP HỌC HÀN GẮN - NƠI YÊU THƯƠNG CÒN MÃI</p>
+      <p>Thời gian hoạt động: 8/2024 – 25/05/2025</p>
+    </header>
+
+    <section aria-labelledby="management-heading">
+      <h2 id="management-heading" class="section-title">Ban quản lý</h2>
+      <div class="management-list">
+        <article class="manager" tabindex="0" aria-label="Lớp trưởng Trần Văn Nhã">
+          <h3>Trần Văn Nhã</h3>
+          <div class="role">Lớp trưởng</div>
+          <div class="contacts">
+            Facebook: <a href="https://www.facebook.com/VanNha204" aria-label="Facebook Trần Văn Nhã">[link]</a><br />
+            Phone number: <span aria-label="Phone number Trần Văn Nhã">0389350809</span><br />
+            Email: <a href="mailto:nha011246892@gmail.com" aria-label="Email Trần Văn Nhã">nha011246892@gmail.com</a>
+          </div>
+        </article>
+        <article class="manager" tabindex="0" aria-label="Lớp phó Trần Nguyễn Hương Giang">
+          <h3>Trần Nguyễn Hương Giang</h3>
+          <div class="role">Lớp phó</div>
+          <div class="contacts">
+            Facebook: <a href="https://www.facebook.com/huonggiang.jimin" aria-label="Facebook Trần Nguyễn Hương Giang">[link]</a><br />
+            Phone number: <span aria-label="Phone number Trần Nguyễn Hương Giang">0862119250</span><br />
+            Email: <a href="mailto:tnhuonggiang08@gmail.com" aria-label="Email Trần Nguyễn Hương Giang">tnhuonggiang08@gmail.com</a>
+          </div>
+        </article>
+        <article class="manager" tabindex="0" aria-label="Lớp phó Nguyễn Thị Thùy Linh">
+          <h3>Nguyễn Thị Thùy Linh</h3>
+          <div class="role">Lớp phó</div>
+          <div class="contacts">
+            Facebook: <a href="https://www.facebook.com/nguyen.linh.814941" aria-label="Facebook Nguyễn Thị Thùy Linh">[link]</a><br />
+            Phone number: <span aria-label="Phone number Nguyễn Thị Thùy Linh">0377591448</span><br />
+            Email: <a href="mailto:Thuylinhtc9529@gmail.com" aria-label="Email Nguyễn Thị Thùy Linh">Thuylinhtc9529@gmail.com</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="hr-heading">
+      <h2 id="hr-heading" class="section-title">HR</h2>
+      <article class="card" tabindex="0" aria-label="HR Trần Thị Bích Ngọc">
+        <h3>Trần Thị Bích Ngọc</h3>
+        <div class="contacts">
+          Facebook: <a href="https://www.facebook.com/Ngocc0207/" aria-label="Facebook Trần Thị Bích Ngọc">[link]</a><br />
+          Phone number: <span aria-label="Phone number Trần Thị Bích Ngọc">0342124325</span><br />
+          Email: <a href="mailto:#" aria-label="Email Trần Thị Bích Ngọc">[email]</a>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="formats-heading">
+      <h2 id="formats-heading" class="section-title">Hình thức</h2>
+      <div class="formats-list" role="list">
+        <div class="format-item" role="listitem">Online: 14 lớp</div>
+        <div class="format-item" role="listitem">Offline: 09 lớp</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">
+        <img src="./logo_rainbow2.png" alt="Lớp Học Cầu Vồng Logo" style="width: 5%; padding: 16px 10px 0 0;">Liên hệ Lớp Học Cầu Vồng</h2>
+      <nav class="socials" aria-label="Social media and contact">
+        <div>
+          <i class="fa fa-facebook social-icons" aria-hidden="true"></i>
+          <a href="#" aria-label="Facebook Lớp Học Cầu Vồng">[link]</a>
+        </div>
+        <div>
+          <i class="fa fa-instagram social-icons" aria-hidden="true"></i>
+          <a href="#" aria-label="Instagram Lớp Học Cầu Vồng">[link]</a>
+        </div>
+        <div>
+          <i class="fa fa-envelope social-icons" aria-hidden="true"></i>
+          <a href="mailto:lophoccauvong15@gmail.com" aria-label="Email Lớp Học Cầu Vồng">lophoccauvong15@gmail.com</a>
+        </div>
+      </nav>
+      <address class="address">
+        Office: Phúc Xá, quận Ba Đình, Hà Nội
+      </address>
+    </section>
+  </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll animation for sections
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>
+</body>
+</html>
