@@ -359,7 +359,8 @@ footer p {
     font-size: 3rem;
   }
   .card h3 {
-    font-size: 2rem;
+    font-size: 30px;
+    text-align: center;
   }
 }
 
