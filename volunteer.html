@@ -106,6 +106,45 @@
       text-decoration: underline;
     }
 
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     @media (max-width: 480px) {
       form {
         padding: 24px;
@@ -158,8 +197,19 @@
     <button type="submit">Gửi phản hồi</button>
   </form>
 
+  <!-- The Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>'Không ai trở nên nghèo khó khi cho đi.' — Anne Frank</p>
+      <p>Cảm ơn bạn đã gieo một hạt giống tử tế – những điều nhỏ bé hôm nay sẽ nở hoa thành điều kỳ diệu ngày mai.</p>
+    </div>
+  </div>
+
   <script>
     const form = document.getElementById('volunteer-form');
+    const modal = document.getElementById("successModal");
+    const closeModal = document.getElementsByClassName("close")[0];
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
@@ -192,8 +242,7 @@
         const data = await response.json();
 
         if (data.result === 'success') {
-          alert("'Không ai trở nên nghèo khó khi cho đi.' — Anne Frank\nCảm ơn bạn đã gieo một hạt giống tử tế – những điều nhỏ bé hôm nay sẽ nở hoa thành điều kỳ diệu ngày mai.");
-
+          modal.style.display = "block"; // Show the modal
           form.reset();
         } else {
           throw new Error(data.error || 'Lỗi không xác định từ máy chủ');
@@ -206,6 +255,16 @@
         submitButton.disabled = false;
       }
     });
+
+    closeModal.onclick = function () {
+      modal.style.display = "none"; // Close the modal
+    }
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none"; // Close the modal if clicked outside
+      }
+    }
 
     async function fetchWithCorsFallback(url, options) {
       try {
@@ -233,6 +292,7 @@
         ok: true
       };
     }
+
     function getDevEndpoint(url) {
       return url.replace('/exec', '/dev');
     }
