@@ -39,6 +39,11 @@
       font-size: 1.8rem;
     }
 
+    .link {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     label {
       display: block;
       margin: 18px 0 6px;
@@ -130,19 +135,45 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
+    img {
+      width: 100%;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .close:hover,
-    .close:focus {
-      color: black;
+    /* Khi click, mở ảnh to ra ở overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px white;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
       text-decoration: none;
-      cursor: pointer;
     }
 
     @media (max-width: 480px) {
@@ -167,6 +198,10 @@
     <a href="./index.html" class="back-button" aria-label="Trở về trang chính">← Trở về trang chính</a>
 
     <h2>Form Tổng Kết Năm Học – Tình Nguyện Viên</h2>
+
+    <div class="link">
+      <a href="https://docs.google.com/spreadsheets/d/1ZO9yiAom6RVlxUFO9OjBkn9ssFsnMtvLCvKk2DwJfI8/edit?gid=0#gid=0" target="_blank">Xem dữ liệu tình nguyện viên</a>
+    </div>
 
     <label for="name">Họ và tên:</label>
     <input type="text" id="name" name="name" placeholder="Trần Văn A" required>
@@ -193,6 +228,24 @@
       <option value="dang_can_nhac">Đang cân nhắc</option>
       <option value="khong">Không</option>
     </select>
+
+    <!-- Image display section inside the form -->
+    <div>
+      <h3>Báo cáo hình ảnh:</h3>
+      <a href="#img1"><img src="./Report1.PNG" alt="Báo cáo 1"></a>
+  <a href="#img2"><img src="./Report2.PNG" alt="Báo cáo 2"></a>
+
+  <!-- Ảnh phóng to -->
+  <div class="lightbox" id="img1">
+    <a href="#" class="close">&times;</a>
+    <img src="./Report1.PNG" alt="Báo cáo 1 lớn">
+  </div>
+
+  <div class="lightbox" id="img2">
+    <a href="#" class="close">&times;</a>
+    <img src="./Report2.PNG" alt="Báo cáo 2 lớn">
+  </div>
+    </div>
 
     <button type="submit">Gửi phản hồi</button>
   </form>
