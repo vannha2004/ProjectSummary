@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The RainBow Class</title>
+  <title>The RainBow Class - Báo cáo thành tích</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -37,7 +36,7 @@
 
   <section id="achievements">
     <div class="container">
-      <h2> 1. Kết quả học tập và sự tiến bộ của học sinh</h2>
+      <h2>1. Kết quả học tập và sự tiến bộ của học sinh</h2>
       <div class="cards-grid">
         <div class="card">
           <h3>Học sinh</h3>
@@ -59,14 +58,14 @@
           <ul>
             <li>6/23 học sinh đạt khá giỏi.</li>
             <li>5 học sinh dưới trung bình.</li>
-            <li><strong>Điểm trung bình:</strong> Toán 7,58 – Văn 7,68 – Anh 6,13.</li>
+            <li><strong>Điểm trung bình:</strong> Toán 7,58 - Văn 7,68 - Anh 6,13.</li>
           </ul>
 
           <h4>Học kỳ II</h4>
           <ul>
             <li>9/23 học sinh đạt khá giỏi (tăng so với kỳ I).</li>
             <li>Chỉ còn 2 học sinh dưới trung bình.</li>
-            <li><strong>Điểm trung bình:</strong> Toán 7,57 – Văn 7,70 – Anh 6,75.</li>
+            <li><strong>Điểm trung bình:</strong> Toán 7,57 - Văn 7,70 - Anh 6,75.</li>
           </ul>
 
           <h4>Ghi nhận</h4>
@@ -75,14 +74,19 @@
             <li>Tăng đáng kể so với học kỳ trước (8.7%).</li>
           </ul>
         </div>
-
+      </div>
+      
+      <!-- Biểu đồ học tập -->
+      <div class="chart-container">
+        <h3>Biểu đồ kết quả học tập qua 2 học kỳ</h3>
+        <canvas id="performanceChart" width="800" height="400"></canvas>
       </div>
     </div>
   </section>
 
   <section id="activities">
     <div class="container">
-      <h2>2. Tình hình lớp học: Phụ huynh – Học sinh – Tình nguyện viên</h2>
+      <h2>2. Tình hình lớp học: Phụ huynh - Học sinh - Tình nguyện viên</h2>
       <div class="cards-grid">
         <div class="card">
           <h3>Phụ huynh</h3>
@@ -108,27 +112,16 @@
               huynh không hợp tác.</li>
             <li><strong>Tình nguyện viên:</strong> Có 2 trường hợp gian dối, 2 trường hợp nghỉ đột xuất, và nhiều TNV thiếu báo cáo, phải nhắc nhiều lần.</li>
             <li>Sau mỗi kỳ nghỉ dài, nhiều TNV tiếp tục xin nghỉ dẫn đến tình trạng gián đoạn việc học của HS</li>
-            
           </ul>
         </div>
       </div>
-      <canvas id="performanceChart" width="400" height="200"></canvas>
     </div>
   </section>
 
   <section id="goals">
     <div class="container">
-      <h2>3. Nhận xét, Bài học & Định hướng</h2>
+      <h2>3. Khó khăn tồn tại & Định hướng</h2>
       <div class="cards-grid">
-        <div class="card">
-          <h3>Bài học & quản lý</h3>
-          <ul>
-            <li>Phân công rõ giữa lớp trưởng và 2 lớp phó giúp tăng hiệu quả.</li>
-            <li>Tạo nhóm chung PH – HS – TNV giúp dễ dàng theo dõi lịch học của HS.</li>
-            <li>Áp dụng biện pháp quyết liệt: gọi điện trao đổi trực tiếp, blacklist nếu tái vi phạm.</li>
-            <li>Quản lý TNV tốt hơn qua việc đổi tên, cập nhật thông tin, xử lý gian dối.</li>
-          </ul>
-        </div>
         <div class="card">
           <h3>Khó khăn</h3>
           <ul>
@@ -143,7 +136,7 @@
           <ul>
             <li>LT & LP nhắc TNV báo cáo đúng hạn, đầy đủ.</li>
             <li>Phổ biến kỹ nội quy từ vòng phỏng vấn TNV.</li>
-            <li>Tăng tương tác giữa BQL – lớp – PH – TNV.</li>
+            <li>Tăng tương tác giữa BQL - lớp - PH - TNV.</li>
             <li><strong>Mục tiêu:</strong> 80% học sinh lớp Hàn Gắn đạt thành tích khá giỏi, không còn HS/TNV vi phạm, tăng hỗ trợ TNV (chứng chỉ,
               hoạt động).</li>
             <li>Động viên các TNV trong lớp tham gia nhiều hoạt động tại lớp học hơn nữa</li>
@@ -153,49 +146,67 @@
     </div>
   </section>
 
+  <section id="experience">
+  <div class="container">
+    <h2>Bài học kinh nghiệm & Đề xuất cải tiến</h2>
+    <div class="cards-grid">
+      
+      <div class="card">
+        <h3>Bài học kinh nghiệm</h3>
+        <ul>
+          <li>
+            Phân công rõ ràng giữa LT và hai LP trong việc theo dõi báo cáo: 
+            <br><strong>- Giang:</strong> nhắc báo cáo vào thứ Hai  
+            <br><strong>- Linh:</strong> nhắc báo cáo vào thứ Ba  
+            <br><strong>- Nhã:</strong> nhắc báo cáo vào thứ Tư  
+            <br>→ Kiểm tra, đọc nội dung các báo cáo mỗi 24h, đảm bảo TNV không sao chép và đầy đủ nội dung.
+          </li>
+          <li>
+            Tạo nhóm chung giữa phụ huynh - học sinh - TNV để dễ dàng theo dõi lịch học (đã triển khai).  
+            → Giảm tình trạng TNV chỉ gửi bài tập qua tin nhắn riêng mà không dạy học qua Google Meet.
+          </li>
+          <li>
+            Áp dụng biện pháp xử lý nghiêm: gọi điện trao đổi trực tiếp, đưa vào danh sách theo dõi, blacklist nếu TNV tái vi phạm lần thứ ba.
+          </li>
+          <li>
+            Tăng cường quản lý TNV bằng cách cập nhật tên, thông tin trên nhóm mess chung và trong Sheet Facebook TNV của lớp Hàn Gắn <Đã được gắn link trong mục BÁO CÁO>. Nhờ HR kick những TNV không còn hoạt động tại lớp.
+          </li>
+        </ul>
+      </div>
 
-  <section id="contact">
-    <div class="container">
-      <h2>TỔNG KẾT</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <h3>Kết quả học tập</h3>
-          <ul>
-            <li>Học kỳ II: 9/23 học sinh đạt khá giỏi (tăng thêm 3 học sinh).</li>
-            <li>Số học sinh dưới trung bình giảm: từ 5 → còn 2.</li>
-            <li>Điểm trung bình ổn định ở môn toán, văn. Đặc biệt điểm tiếng Anh tăng vượt bậc</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Biến động nhân sự</h3>
-          <ul>
-            <li>5 học sinh rời lớp do nghỉ nhiều hoặc PH không hợp tác.</li>
-            <li>3 học sinh mới chuyển đến (trong đó có chuyển hình thức học).</li>
-            <li>Nhiều TNV nghỉ dạy, thiếu báo cáo hoặc vi phạm nội quy.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Đề xuất cải thiện</h3>
-          <ul>
-            <li>Tăng hỗ trợ cho TNV (chứng chỉ, hoạt động lớp).</li>
-            <li>Nhắc nhở & kiểm tra báo cáo thường xuyên.</li>
-            <li>Răn đe TNV vi phạm – tránh báo cáo sơ sài, gian dối.</li>
-            <li>Tăng tương tác với PH & HS để nâng hiệu quả học tập.</li>
-            <li>Khen thưởng học sinh bằng giấy khen kèm dấu mộc đỏ hoặc chữ ký số, thay vì kẹo, đồ chơi,...</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3>Đề xuất cải tiến</h3>
+        <ul>
+          <li>
+            Tăng mức độ hỗ trợ cho TNV (về chứng chỉ, hoạt động lớp...) bằng cách chia sẻ thường xuyên các hoạt động trong nhóm Messenger, do nhiều TNV không theo dõi nhóm Facebook chung.
+          </li>
+          <li>
+            Sau mỗi lần kiểm tra báo cáo, cần tag trực tiếp TNV liên quan. Nếu sau 24h không có phản hồi, sẽ gọi điện nhắc nhở.
+          </li>
+          <li>
+            Nhắc nhở TNV vi phạm trực tiếp trong nhóm chung nhằm răn đe và giảm tình trạng báo cáo sơ sài hoặc thiếu trung thực.
+          </li>
+          <li>
+            Cập nhật thông tin phản hồi từ TNV về học sinh để phụ huynh nắm được. Ví dụ: nếu HS nhiều lần không làm bài, có thái độ lười học, LT sẽ gọi điện thông báo với PH trong vòng 24h.
+          </li>
+          <li>
+            Bổ sung thêm thông tin về học sinh: lớp học, học lực, bộ sách đang dùng, nhận xét từ TNV trước đó,...  
+            → Hỗ trợ tốt hơn cho việc ghép lớp, tuyển TNV mới (nếu cần).
+          </li>
+          <li>
+            Cảm ơn các TNV dạy tốt trước khi rời đi (Trước đây có nhưng dạo gần đây em đang chưa sắp xếp được :v). Thực sự đã có một vài TNV lớp HG quay trở lại & ủng hộ lớp học.
+          </li>
+        </ul>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
+
 
   <footer>
-    <p>© 8th June 2025 Created by VanNha.</p>
+    <p>© 24th June 2025 Created by HanGan Class.</p>
   </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>

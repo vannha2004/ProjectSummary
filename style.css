@@ -8,10 +8,10 @@
   --max-width: 1200px;
   --transition-duration: 0.3s;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --primary-color: #3b82f6; /* Vibrant blue */
-  --secondary-color: #facc15; /* Vivid yellow */
-  --success-color: #22c55e; /* Bright green */
-  --danger-color: #ef4444; /* Red for warnings */
+  --primary-color: #3b82f6; 
+  --secondary-color: #facc15; 
+  --success-color: #22c55e; 
+  --danger-color: #ef4444; 
   --gradient-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
@@ -115,7 +115,6 @@ nav {
   white-space: nowrap; 
 }
 
-
 .nav-links a {
   padding: 0.5rem 0px;
   position: relative;
@@ -205,7 +204,6 @@ nav {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transition: left var(--transition-duration) ease;
 }
-
 
 .btn-primary:hover::after,
 .btn-primary:focus::after {
@@ -325,6 +323,21 @@ section h2::after {
   font-weight: 700;
 }
 
+/* Chart Container */
+.chart-container {
+  margin: 4rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 15px var(--card-shadow);
+}
+
+.chart-container h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -337,15 +350,6 @@ footer {
 
 footer p {
   margin: 0;
-}
-
-/* Chart */
-#report canvas {
-  display: block;
-  margin: 2rem auto;
-  max-width: 600px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 @media (min-width: 768px) {
@@ -380,5 +384,8 @@ footer p {
   }
   .cards-grid {
     grid-template-columns: 1fr;
+  }
+  .chart-container {
+    padding: 1rem;
   }
 }
