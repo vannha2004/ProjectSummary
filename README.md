@@ -1,0 +1,3 @@
+A project for managing and checking report from vonlunteer in the Rainbow Class - an organization that specilizes in helping needy students, people in HaNoi and others province like HaGiang, CaoBang, LangSon...
+This project was true until 01.12.2025, if someone changes the sheet name on Google Sheet, this project must be updated to use it extractly.
+Technology: Google App Scripts on Google Sheet Online intergrated with fullstack.
